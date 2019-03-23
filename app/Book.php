@@ -12,18 +12,9 @@ class Book extends Model
      * @var array
      */
     protected $fillable = [
-        'title', 'about'
+        'title', 'about', 'category_id'
     ];
-
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
-    protected $hidden = [
-        'updated_at',
-    ];
-
+    
     /**
      * Get authors associated with this book.
      *
