@@ -13,16 +13,16 @@ class GenresTableSeeder extends Seeder
     public function run()
     {
         DB::table('genres')->insert([
-            ['genre' => 'Детектив'],
-            ['genre' => 'Роман'],
-            ['genre' => 'Фантастика'],
-            ['genre' => 'Современная проза'],
-            ['genre' => 'Юмор'],
-            ['genre' => 'Фольклор'],
-            ['genre' => 'Психология'],
-            ['genre' => 'Саморазвитие'],
-            ['genre' => 'Биология'],
-            ['genre' => 'География'],
+            ['genre' => 'Детектив', 'created_at' => now(), 'updated_at' => now()],
+            ['genre' => 'Роман', 'created_at' => now(), 'updated_at' => now()],
+            ['genre' => 'Фантастика', 'created_at' => now(), 'updated_at' => now()],
+            ['genre' => 'Современная проза', 'created_at' => now(), 'updated_at' => now()],
+            ['genre' => 'Юмор', 'created_at' => now(), 'updated_at' => now()],
+            ['genre' => 'Фольклор', 'created_at' => now(), 'updated_at' => now()],
+            ['genre' => 'Психология', 'created_at' => now(), 'updated_at' => now()],
+            ['genre' => 'Саморазвитие', 'created_at' => now(), 'updated_at' => now()],
+            ['genre' => 'Биология', 'created_at' => now(), 'updated_at' => now()],
+            ['genre' => 'География', 'created_at' => now(), 'updated_at' => now()],
         ]);
     }
 }

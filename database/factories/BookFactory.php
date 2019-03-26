@@ -8,6 +8,6 @@ $factory->define(Book::class, function () {
     return [
         'title' => $faker->realText(20),
         'about' => $faker->realText(320),
-        'category_id' => App\Category::all()->random()->id,
+        'genre_id' => App\Genre::all()->random()->id,
     ];
 });

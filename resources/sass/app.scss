@@ -8,7 +8,29 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+//Select2
+@import '~select2/dist/css/select2.min.css';
+
 .navbar-laravel {
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+.select2-container{
+  min-width: 15rem;
+}
+
+.bookItem{
+  border: 1px solid #D0D0D0;
+  box-shadow: 0 0 8px #D0D0D0;
+}
+.bookImageInner{
+  width: 12rem;
+  height: 16rem;
+  background-position: center center;
+  background-size: cover;
+  border: 1px solid #F0D0D0;
+  box-shadow: 0 0 8px #D0D0D0;
+}
+.bookInfo{
+  padding-top: 1rem;
 }

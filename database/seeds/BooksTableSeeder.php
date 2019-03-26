@@ -14,7 +14,6 @@ class BooksTableSeeder extends Seeder
     {
         factory(Book::class, 20)->create()->each(function($book) {
             $book->authors()->attach(App\Author::all()->random()->id);
-            $book->genres()->attach(App\Genre::all()->random()->id);
         });
     }
 }

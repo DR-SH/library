@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Genre extends Model
+class Store extends Model
 {
     /**
      * The attributes that are mass assignable.
@@ -12,16 +12,16 @@ class Genre extends Model
      * @var array
      */
     protected $fillable = [
-        'genre'
+        'amount', 'book_id'
     ];
 
     /**
-     * Get books associated with this genre.
+     * Get book associated with this store.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function book()
     {
-        return $this->hasMany('App\Book');
+        return $this->belongsTo('App\Book');
     }
 }

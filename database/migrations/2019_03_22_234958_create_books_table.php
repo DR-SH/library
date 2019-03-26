@@ -17,8 +17,8 @@ class CreateBooksTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->text('about');
-            $table->integer('category_id')->unsigned()->nullable();
-            $table->foreign('category_id')->references('id')->on('categories')->onDelete('set null');
+            $table->integer('genre_id')->unsigned()->nullable();
+            $table->foreign('genre_id')->references('id')->on('genres')->onDelete('set null');
             $table->timestamps();
         });
     }
@@ -31,7 +31,7 @@ class CreateBooksTable extends Migration
     public function down()
     {
         Schema::table('books', function (Blueprint $table) {
-            $table->dropForeign('books_category_id_foreign');
+            $table->dropForeign('books_genre_id_foreign');
         });
         Schema::dropIfExists('books');
     }

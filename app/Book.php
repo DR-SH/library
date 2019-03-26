@@ -66,22 +66,22 @@ class Book extends Model
     }
     
     /**
-     * Get genres associated with this book.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
-     */
-    public function genres()
-    {
-        return $this->belongsToMany('App\Genre');
-    }
-
-    /**
-     * A book belongs to category.
+     * Get genre associated with this book.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function category()
+    public function genre()
     {
-        return $this->belongsTo('App\Category');
+        return $this->belongsTo('App\Genre');
+    }
+
+    /**
+     * Get store associated with this book.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\hasOne
+     */
+    public function store()
+    {
+        return $this->hasOne('App\Store');
     }
 }

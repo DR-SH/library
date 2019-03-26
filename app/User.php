@@ -57,5 +57,14 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Comment');
     }
-
+    
+    /**
+     * Check if user is admin.
+     *
+     * @return bool 
+     */
+    public function isAdmin()
+    {
+        return $this->role['role'] == 'admin';
+    }
 }
