@@ -98,8 +98,10 @@ $(function () {
     headers: {
       'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
     }
-  });
-  $('.flashMess').delay(3000).slideUp();
+  }); // Исчезновение флэш-сообщения после совершения действия админом
+
+  $('.flashMess').delay(3000).slideUp(); // Выбор авторов при создании или редактировании книг
+
   $('#formAuthors').select2({
     placeholder: 'Выберите автора',
     maximumSelectionLength: 3,
@@ -112,7 +114,8 @@ $(function () {
         return "Вы не можете выбрать более трех авторов";
       }
     }
-  });
+  }); // Выбор жанров при создании или редактировании книг
+
   $('#formGenre').select2({
     placeholder: 'Выберите жанр',
     tags: false,
@@ -121,7 +124,8 @@ $(function () {
         return "Результатов не найдено";
       }
     }
-  });
+  }); // Асинхронное отвязывание обложек от книг
+
   $("#app").on('click', '#delCover', function (e) {
     e.preventDefault();
     var ajaxId = $(this).attr('data-id');
@@ -143,8 +147,9 @@ $(function () {
         ;
       }
     });
-  });
-  $("#app").on('click', '#delFile', function (e) {
+  }); // Асинхронное отвязывание файлов от книг
+
+  $('#app').on('click', '#delFile', function (e) {
     e.preventDefault();
     var ajaxId = $(this).attr('data-id');
     var ajaxFilename = $(this).attr('data-filename');
@@ -163,6 +168,29 @@ $(function () {
         }
 
         ;
+      }
+    });
+  });
+  $("#app").on('click', '#commentButton', function (e) {
+    e.preventDefault();
+    var ajaxText = $("#commentText").val();
+    var ajaxBook = $(this).attr('data-book');
+    console.log(ajaxBook + '/' + ajaxText);
+    $.ajax({
+      type: 'post',
+      url: '/comment/create',
+      dataType: 'html',
+      data: {
+        message: ajaxText,
+        book: ajaxBook
+      },
+      success: function success(msg) {
+        if (msg) {
+          var comment = $.parseJSON(msg);
+          console.log(comment);
+          $('.comments').prepend("<div class='comment'><hr><p>" + comment.user + ", " + comment.created_at + "</p><p>" + comment.message + "</p></div>");
+          $("#commentText").val('');
+        }
       }
     });
   });

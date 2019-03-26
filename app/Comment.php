@@ -12,9 +12,17 @@ class Comment extends Model
      * @var array
      */
     protected $fillable = [
-        'message', 'book-id', 'user_id'
+        'message', 'book_id', 'user_id'
     ];
 
+    /**
+     * The attributes that should be mutated to dates.
+     *
+     * @var array
+     */
+    protected $dates = [
+        'created_at', 'updated_at'
+    ];
     /**
      * A comment belongs to user.
      *

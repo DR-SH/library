@@ -37,10 +37,12 @@
         <div class="input-group">
             <textarea class="form-control mb-3" aria-label="With textarea" id="commentText"></textarea>
         </div>
-        <button class="btn btn-primary btn-block" id="commentButton">Оставить комментарий</button>
+        <button class="btn btn-primary btn-block"
+                data-book="{{$book->id}}"
+                id="commentButton">Оставить комментарий</button>
         <div class="comments">
-        @if($book->comments()->exists())
-            @foreach($book->comments as $comment)
+        @if($comments)
+            @foreach($comments as $comment)
                 <div class="comment">
                     <hr>
                     <p>{{$comment->user->name}}, {{$comment->created_at}}</p>

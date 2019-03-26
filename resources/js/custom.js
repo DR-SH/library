@@ -60,7 +60,7 @@ $(function() {
 
     // Асинхронное отвязывание файлов от книг
 
-    $("#app").on('click', '#delFile', function(e){
+    $('#app').on('click', '#delFile', function(e){
         e.preventDefault();
         var ajaxId = $(this).attr('data-id');
         var ajaxFilename = $(this).attr('data-filename');
@@ -80,16 +80,22 @@ $(function() {
 
     $("#app").on('click', '#commentButton', function(e){
         e.preventDefault();
-        var ajaxText = $("#commentText").html;
+        var ajaxText = $("#commentText").val();
+        var ajaxBook = $(this).attr('data-book');
+        console.log(ajaxBook + '/' + ajaxText);
         $.ajax({
             type:'post',
             url:'/comment/create',
             dataType: 'html',
-            data: {text: ajaxText},
+            data: {message: ajaxText, book: ajaxBook},
             success:function(msg){
                 if(msg){
-                    console.log(ajaxText);
-                };
+                    var comment = $.parseJSON(msg);
+                    console.log(comment);
+                    $('.comments').prepend("<div class='comment'><hr><p>"+ comment.user +", " + comment.created_at +
+                        "</p><p>"+comment.message+"</p></div>");
+                    $("#commentText").val('');
+                }
             }
         });
     });

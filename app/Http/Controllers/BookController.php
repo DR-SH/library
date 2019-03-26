@@ -29,6 +29,13 @@ class BookController extends Controller
      */
     public function show(Book $book)
     {
-        return view('public/show', ['book' => $book]);
+        if($book->comments()->exists()){
+            $comments = $book->comments->sortByDesc('id');
+        }
+        else{
+            $comments = '';
+        }
+
+        return view('public/show', ['book' => $book, 'comments' => $comments]);
     }
 }
