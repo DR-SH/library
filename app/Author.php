@@ -16,7 +16,7 @@ class Author extends Model
     ];
 
     /**
-     * Get books associated with this author.
+     * Get books associated with the author.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
@@ -26,7 +26,7 @@ class Author extends Model
     }
 
     /**
-     * Get ids of books attached with author.
+     * Get ids of books associated with the author.
      *
      * @return array
      */

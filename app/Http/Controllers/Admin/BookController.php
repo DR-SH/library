@@ -14,19 +14,9 @@ use App\Http\Controllers\Controller;
 
 class BookController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        $books = Book::orderBy('id', 'desc')->paginate(6);
-        return view('admin/index', ['books' => $books]);
-    }
 
     /**
-     * Show the form for creating a new resource.
+     * Show the form for creating a new book.
      *
      * @return \Illuminate\Http\Response
      */
@@ -45,13 +35,8 @@ class BookController extends Controller
      */
     public function store(BookRequest $request)
     {
-        //dd($request->all());
         $book = Book::create($request->all());
-        $book->genre()->associate($request->input('genre'));
-        $book->authors()->sync($request->input('authors'));
-        $this->fileUpload($book, $request->file('loadFile'));
-        $this->coverUpload($book, $request->file('loadCover'));
-        $book->save();
+        $book = $this->updateOrCreate($book, $request);
         return redirect('admin')->with('flash_msg', 'Создана книга: '.$book->title);
     }
 
@@ -78,32 +63,16 @@ class BookController extends Controller
     public function update(BookRequest $request, $book)
     {
         $book->update($request->all());
-        $book->genre()->associate($request->input('genre'));
-        $book->authors()->sync($request->input('authors'));
-        $this->fileUpload($book, $request->file('loadFile'));
-        $this->coverUpload($book, $request->file('loadCover'));
-        $book->save();
+        $book = $this->updateOrCreate($book, $request);
         return redirect('admin')->with('flash_msg', 'Отредактирована книга: '.$book->title);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        dd('admin destroy');
-    }
 
     /**
-     * This method created new
+     * Create a new file
      *
      * @param App\Book - book
      * @param $file - loaded file
-     * @param string $dir
-     *
      * @return string - message if file downloaded successfully or empty string instead
      */
     private function fileUpload($book, $file)
@@ -123,7 +92,6 @@ class BookController extends Controller
      *
      * @param App\Book - book
      * @param $file - loaded file
-     *
      * @return string - message if file downloaded successfully or empty string instead
      */
     private function coverUpload($book, $file)
@@ -136,6 +104,23 @@ class BookController extends Controller
             return ' Обложка загружена.';
         }
         return '';
+    }
+
+    /**
+     * Make operation for creating or updating the book
+     *
+     * @param \App\Book $book
+     * @param $request
+     * @return mixed
+     */
+    private function updateOrCreate($book, $request){
+        $book->genre()->associate($request->input('genre'));
+        $book->authors()->sync($request->input('authors'));
+        $book->store()->updateOrCreate(['amount' => $request->input('amount')]);
+        $this->fileUpload($book, $request->file('loadFile'));
+        $this->coverUpload($book, $request->file('loadCover'));
+        $book->save();
+        return $book;
     }
 
 }

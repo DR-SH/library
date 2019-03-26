@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Author;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AuthorRequest;
 
@@ -33,7 +32,7 @@ class AuthorController extends Controller
     /**
      * Store a newly created author in storage.
      *
-     * @param  \App\Http\Requests\AuthorRequest  $request
+     * @param  \App\Http\Requests\AuthorRequest $request
      * @return \Illuminate\Http\Response
      */
     public function store(AuthorRequest $request)
@@ -54,7 +53,7 @@ class AuthorController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the specified author in storage.
      *
      * @param  \App\Http\Requests\AuthorRequest $request
      * @param  \App\Author $author

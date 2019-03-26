@@ -36,7 +36,7 @@ class Book extends Model
     }
 
     /**
-     * A book has file
+     * A book has file.
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
@@ -46,7 +46,7 @@ class Book extends Model
     }
 
     /**
-     * A book has cover
+     * A book has cover.
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
@@ -66,7 +66,7 @@ class Book extends Model
     }
     
     /**
-     * Get genre associated with this book.
+     * Get a genre associated with this book.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
@@ -76,7 +76,7 @@ class Book extends Model
     }
 
     /**
-     * Get store associated with this book.
+     * Get a store associated with this book.
      *
      * @return \Illuminate\Database\Eloquent\Relations\hasOne
      */

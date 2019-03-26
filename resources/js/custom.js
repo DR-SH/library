@@ -78,6 +78,8 @@ $(function() {
         });
     });
 
+    // Асинхронное добавление комментария к книге
+
     $("#app").on('click', '#commentButton', function(e){
         e.preventDefault();
         var ajaxText = $("#commentText").val();
@@ -98,5 +100,13 @@ $(function() {
                 }
             }
         });
+    });
+
+    // Поиск по названиям книг
+
+    $("#app").on('click', '#searchButton', function(e){
+        e.preventDefault();
+        if ($("#searchInput").val())
+            window.location.href = "/search/" + $("#searchInput").val();
     });
 });

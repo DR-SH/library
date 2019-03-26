@@ -6,26 +6,19 @@
 </div>
 <div class="form-group">
     <label for="about">Описание</label>
-                        <textarea class="form-control" id="about" name="about" aria-describedby="emailHelp"
-                                  placeholder="Описание книги">{{$about}}</textarea>
+    <textarea class="form-control" id="about" name="about" aria-describedby="emailHelp"
+              placeholder="Описание книги">{{$about}}</textarea>
 </div>
-{{--<div class="form-group">--}}
-    {{--<label for="about">Жанр книги</label>--}}
-                        {{--<textarea class="form-control" id="about" name="about" aria-describedby="emailHelp"--}}
-                                  {{--placeholder="Описание книги">{{$genre}}</textarea>--}}
-{{--</div>--}}
 <div class="form-group form-authors">
     <label for="formAuthors">Авторы:</label>
     <select multiple class="form-control" id="formAuthors"  name="authors[]">
-            @foreach($authors as $author)
-                <option value="{{$author->id}}"
-                     @if(in_array($author->id, $authorsIds))selected="selected"@endif>
-                    {{$author->name}}</option>
-            @endforeach
+        @foreach($authors as $author)
+            <option value="{{$author->id}}"
+                @if(in_array($author->id, $authorsIds))selected="selected"@endif>
+                {{$author->name}}</option>
+        @endforeach
     </select>
-
 </div>
-
 <div class="form-group form-genres">
     <label for="formGenre">Жанр:</label>
     <select class="form-control" id="formGenre" name="genre">
@@ -63,7 +56,8 @@
             <a href="{{Storage::url($file->filename)}}" class = "mr-2">{{$title}}</a>
             <button type="submit" class="btn btn-outline-danger btn-sm"
                     data-filename="{{$file->filename}}" data-id ="{{$file->id}}"
-                    id="delFile">Отвязать файл (необратимо)</button>
+                    id="delFile">Отвязать файл (необратимо)
+            </button>
         </div>
     @endif
     <div class="form-group uploadFile mt-2" style="display:@if($file) none @else block @endif">

@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.app')
 
 @section('content')
     <div class="container">
@@ -8,8 +8,11 @@
                     <h1>Список жанров</h1>
                     @foreach($genres as $genre)
                         <div class="m-2">
-                            <h5><a href="{{ action('Admin\GenreController@edit', [$genre->id])}}">{{$genre->genre}}</a></h5>
-
+                            <h5>
+                                <a href="{{ action('Admin\GenreController@edit', [$genre->id])}}">
+                                    {{$genre->genre}}
+                                </a>
+                            </h5>
                         </div>
                     @endforeach
                     <div>{{ $genres->links() }}</div>

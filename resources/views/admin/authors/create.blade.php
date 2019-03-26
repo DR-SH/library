@@ -9,8 +9,8 @@
                 <form method="POST" action = '{{action('Admin\AuthorController@store')}}'>
                     @include('admin.authors.partials.form', ['name'=> '',
                                                              'books' => '',
-                                                     'submitButText' => 'Создать'
-                                                      ])
+                                                             'submitButText' => 'Создать'
+                                                             ])
                 </form>
             </div>
         </div>

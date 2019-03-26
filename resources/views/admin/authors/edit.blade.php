@@ -11,8 +11,8 @@
 
                     @include('admin.authors.partials.form', ['name'=> $author->name,
                                                              'books' => $author->books,
-                                                     'submitButText' => 'Редактировать'
-                                                      ])
+                                                             'submitButText' => 'Редактировать'
+                                                              ])
                 </form>
             </div>
         </div>

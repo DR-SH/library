@@ -3,15 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\Request;
 use App\Http\Requests\CommentRequest;
 
 use App\Comment;
 
-/**
- * Class CommentController
- * @package App\Http\Controllers
- */
 class CommentController extends Controller
 {
     /**
@@ -21,7 +16,6 @@ class CommentController extends Controller
     public function create(CommentRequest $request)
     {
         $user_id = Auth::user()->id;
-        //return $request->input('book');
         $comment =  Comment::create(['message' => $request->input('message'),
                                 'book_id' => $request->input('book'),
                                 'user_id' => $user_id]);

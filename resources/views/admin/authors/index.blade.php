@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.app')
 
 @section('content')
     <div class="container">
@@ -8,13 +8,14 @@
                     <h1>Список авторов</h1>
                     @foreach($authors as $author)
                         <div class="m-2">
-                            <h5><a href="{{ action('Admin\AuthorController@edit', [$author->id])}}">{{$author->name}}</a></h5>
-
+                            <h5><a href="{{ action('Admin\AuthorController@edit', [$author->id])}}">
+                                    {{$author->name}}
+                                </a>
+                            </h5>
                         </div>
                     @endforeach
                     <div>{{ $authors->links() }}</div>
                 @endif
-
             </div>
         </div>
     </div>

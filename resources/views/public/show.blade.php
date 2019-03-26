@@ -14,14 +14,18 @@
             </div>
             <div class="bookInfo p-0 col-12 col-md-8">
                 <h1>{{$book->title}}</h1>
-                <p>{{$book->about}}</p>
-                <p><b>Автор:</b></p>
                 @foreach($book->authors as $author)
                     <p>{{$author->name}}</p>
                 @endforeach
+                <p>{{$book->about}}</p>
+                <hr>
                 @if($book->genre()->exists())
-                    <p><b>Жанр: </b><i>{{$book->genre->genre}}</i></p>
+                    <p><b>Жанр: </b>
+                        <i><a href="{{action('BookController@genre', $book->genre->id )}}">
+                                {{$book->genre->genre}}</a></i>
+                    </p>
                 @endif
+                <hr>
                 @if($book->store()->exists() && $book->store->amount>0)
                     <p>Бумажная версия в наличии!</p>
                 @else
@@ -32,25 +36,25 @@
                 @else
                     <p><i>Электронная версия недоступна</i></p>
                 @endif
+                <hr>
             </div>
         </div>
         <div class="input-group">
             <textarea class="form-control mb-3" aria-label="With textarea" id="commentText"></textarea>
         </div>
-        <button class="btn btn-primary btn-block"
-                data-book="{{$book->id}}"
-                id="commentButton">Оставить комментарий</button>
+        <button class="btn btn-outline-dark btn-block" data-book="{{$book->id}}" id="commentButton">
+            Оставить комментарий
+        </button>
         <div class="comments">
-        @if($comments)
-            @foreach($comments as $comment)
-                <div class="comment">
-                    <hr>
-                    <p>{{$comment->user->name}}, {{$comment->created_at}}</p>
-                    <p>{{$comment->message}}</p>
-                </div>
-            @endforeach
-        @endif
+            @if($comments)
+                @foreach($comments as $comment)
+                    <div class="comment">
+                        <hr>
+                        <p>{{$comment->user->name}}, {{$comment->created_at}}</p>
+                        <p>{{$comment->message}}</p>
+                    </div>
+                @endforeach
+            @endif
         </div>
-
     </div>
 @endsection

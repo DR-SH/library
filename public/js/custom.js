@@ -194,6 +194,10 @@ $(function () {
       }
     });
   });
+  $("#app").on('click', '#searchButton', function (e) {
+    e.preventDefault();
+    if ($("#searchInput").val()) window.location.href = "/search/" + $("#searchInput").val();
+  });
 });
 
 /***/ }),

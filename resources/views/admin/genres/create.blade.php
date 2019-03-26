@@ -8,8 +8,8 @@
                 @include('layouts.partials.errors')
                 <form method="POST" action = '{{action('Admin\GenreController@store')}}'>
                     @include('admin.genres.partials.form', ['genre'=> '',
-                                                     'submitButText' => 'Создать'
-                                                      ])
+                                                             'submitButText' => 'Создать'
+                                                            ])
                 </form>
             </div>
         </div>

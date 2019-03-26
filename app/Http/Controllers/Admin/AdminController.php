@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class AdminController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display the admin's management page.
      *
      * @return \Illuminate\Http\Response
      */

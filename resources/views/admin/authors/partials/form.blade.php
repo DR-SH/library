@@ -13,5 +13,4 @@
            placeholder="ФИО Автора" value = "{{$name}}">
 </div>
 
-
 <button type="submit" class="btn btn-primary" >{{$submitButText}}</button>

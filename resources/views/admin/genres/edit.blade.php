@@ -9,8 +9,8 @@
                 <form method="POST" action = '{{action('Admin\GenreController@update', $genre->id)}}'>
                     <input name="_method" type="hidden" value="PATCH">
                     @include('admin.genres.partials.form', ['genre'=> $genre->genre,
-                                                     'submitButText' => 'Редактировать'
-                                                      ])
+                                                             'submitButText' => 'Редактировать'
+                                                            ])
                 </form>
             </div>
         </div>
